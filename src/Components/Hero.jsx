@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="w-1/2 h-[190px] flex flex-col justify-center items-center backdrop-blur-md bg-white/20 rounded-2xl text-black p-4 gap-4">
             <h1 className='font-extrabold text-4xl  '>Instagram Downloader</h1>
             <h3 className='font-bold text-lg'>Instagram Downloader for Video & Reels, Story, Photos</h3>
-            <p className='text-lg font-light'>PAST LINK AND CLICK DOWNLOAD BUTTON</p> 
+            <p className='text-lg font-light'>PAST LINK AND CLICK DOWNLOAD BUTTON</p>    
         </div>
   
        <div className="max-w-auto  min-w-[60%] h-auto relative  justify-center items-center flex mt-7">
