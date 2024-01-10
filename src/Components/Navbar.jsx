@@ -1,8 +1,13 @@
+
 import React from 'react'
 
 
 
 const Navbar = () => {
+
+
+
+
   return (
     <div className='flex w-full h-auto  justify-center'>
         <div className="flex lg:w-[80%] w-full md:w-[90%]  h-auto p-4 justify-between items-center shadow-lg shadow-gray-700 ">
