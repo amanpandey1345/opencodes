@@ -126,7 +126,7 @@ const page = () => {
         content,
         setBlog,
         editorState,
-        setEditorState,
+        setEditorState,     
         setTextEditor,
         textEditor,
       }}
