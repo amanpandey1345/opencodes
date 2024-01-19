@@ -8,10 +8,6 @@ import { HiMiniVideoCamera } from "react-icons/hi2";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 const SubNav = ({ds}) => {
 
-
-
-  
-    
   return (
     <>
     <div className="flex lg:w-1/2 md:w-[70%] w-[90%] h-[150px] justify-center items-center text-white md:text-base text-sm transition-all">

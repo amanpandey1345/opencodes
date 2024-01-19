@@ -4,16 +4,20 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { signIn, signOut, useSession } from "next-auth/react";
+import Link from 'next/link';
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const [animationParent] = useAutoAnimate()
+  const [animationParent] = useAutoAnimate() 
+  const {status} = useSession();
+  console.log(status);
   return (
     <div className='flex justify-center w-full h-auto transition-all 'ref={animationParent}>
       {
         open &&  
       <MobNavbar setOpen={setOpen}/>
       }
-        <div className="flex lg:w-[80%] w-full md:w-[90%]  h-auto p-4 justify-between items-center shadow-lg shadow-gray-700 ">
+        <div className="flex lg:w-[90%] w-full md:w-[90%]  h-auto p-4 justify-between items-center shadow-lg shadow-gray-700 ">
 
         <h1 className='font-extrabold text-orange-400 transition-all md:text-2xl hover:scale-110'>SAVEINSTA</h1>
         <ul className='md:flex  lg:w-[40%] md:w-[50%] hidden h-auto justify-center items-center gap-7 text-black'>
@@ -33,7 +37,18 @@ const Navbar = () => {
             </div>
           </div>
             <li className='transition-all text-neutral-400 hover:text-black'>contact</li> 
-            <li className='transition-all text-neutral-400 hover:text-black'>Blog</li>
+            <Link href={"/blog"} className='transition-all text-neutral-400 hover:text-black'>Blog</Link>
+            {
+              status ==="authenticated" ?
+
+              <div className={"py-1 px-3 bg-blue-500 text-white"} onClick={()=>signOut()}>
+    SignOut 
+  </div>:
+         
+            <div className={"py-1 px-3 bg-blue-500 text-white"} onClick={() => signIn("google")}>
+    SignIn 
+  </div>
+     }
         </ul>  
         <div className="flex md:hidden">
           <FiMenu className='text-4xl' onClick={()=> setOpen(true)} />
