@@ -71,7 +71,7 @@ useEffect(() => {
     let loadingblog;
     try {
        loadingblog = toast.loading("Publishing....");
-      const { data } = await axios.put(`http://localhost:3000/api/blog/${ids}`, {
+      const { data } = await axios.put(`/api/blog/${ids}`, {
         banner,
         title,
         des,
@@ -97,11 +97,11 @@ useEffect(() => {
     
   };
 
-
+ 
 
 
   const handleGet=async()=>{
-    const res = await fetch(`http://localhost:3000/api/blog/${id}`)
+    const res = await fetch(`/api/blog/${id}`)
     const d = await res.json();
     setBanner(d.blog.banner)
     setContent(d.blog.content)

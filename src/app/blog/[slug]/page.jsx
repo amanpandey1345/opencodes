@@ -16,7 +16,7 @@ const page = ({ params }) => {
   }, []);
 
   const handleData = async () => {
-    let { data } = await axios.get(`http://localhost:3000/api/blog/${slug}`);
+    let { data } = await axios.get(`/api/blog/${slug}`);
     console.log(data);
     setblog(data.blog);
   };

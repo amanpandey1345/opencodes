@@ -5,9 +5,9 @@ import React from 'react'
 const page = async() => {
 
 
-  const res = await fetch("http://localhost:3000/api/blog")
+  const res = await fetch(`${process.env.NEXTAUTH_URL}api/blog`)
   const {blog} = await res.json();
-
+    
   return ( 
     <> 
     <div className="flex flex-wrap items-center justify-center w-full min-h-screen gap-6 p-4 bg-pink-300/20">

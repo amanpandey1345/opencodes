@@ -70,11 +70,11 @@ const page = () => {
     let loadingblog;
     try {
        loadingblog = toast.loading("Publishing....");
-      const { data } = await axios.post(`http://localhost:3000/api/blog`, {
+      const { data } = await axios.post(`/api/blog`, {
         banner,
         title,
         des,
-        content: contents,
+        content: contents,  
         cat: cat || "Tech",
         slug: slugify(title),
       });
