@@ -1,9 +1,15 @@
 "use client"
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import EditorJS from '@editorjs/editorjs'
+// import EditorJS from '@editorjs/editorjs'
 import { tools } from './EditorTools'
 import { EditorContext } from '@/app/write-blog/page'
 import { EditorContexts } from '@/app/update-blog/[id]/page'
+import dynamic from 'next/dynamic'
+ 
+const EditorJS = dynamic(() => import('@editorjs/editorjs'), {
+  loading: () => <p>Loading...</p>,
+  ssr:false
+})
 
 
 const EditBlogEditor = ({content}) => {
@@ -35,7 +41,7 @@ const EditBlogEditor = ({content}) => {
   
   useEffect(() => { 
     
-    if(typeof window != "undefined" && content){
+    if( content){
       setIsMounted(true)
     }
   }, [content])

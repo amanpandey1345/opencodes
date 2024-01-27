@@ -157,7 +157,7 @@ const page = () => {
           className="resize-none text-4xl font-medium w-full md:w-[80%] leading-tight placeholder:opacity-40 h-20 outline-none "
           placeholder="Blog Title"
         ></textarea>
-        <textarea
+        <textarea 
           defaultValue={des}
           onChange={(e) => setDes(e.target.value)}
           name=""

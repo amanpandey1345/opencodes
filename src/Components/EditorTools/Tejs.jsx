@@ -1,9 +1,15 @@
 "use client"
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import EditorJS from '@editorjs/editorjs'
+// import EditorJS from '@editorjs/editorjs'
 import { tools } from './EditorTools'
 import { EditorContext } from '@/app/write-blog/page'
+import dynamic from 'next/dynamic'
+ 
 
+const EditorJS = dynamic(() => import('@editorjs/editorjs'), {
+  loading: () => <p>Loading...</p>,
+  ssr:false
+})
 
 const Tejs = () => {
    
@@ -30,9 +36,10 @@ const Tejs = () => {
   
   useEffect(() => { 
     
-    if(typeof window != "undefined"){
+    // if(typeof window != "undefined"){
+    //   setIsMounted(true)
+    // }
       setIsMounted(true)
-    }
   }, [])
   useEffect(() => {
     const init = async ()=>{
