@@ -5,7 +5,7 @@ import React from 'react'
 const page = async() => {
 
 
-  const res = await fetch(`${process.env.NEXTAUTH_URL}api/blog`)
+  const res = await fetch(`/api/blog`)
   const {blog} = await res.json();
     
   return ( 
