@@ -1,11 +1,16 @@
 "use client";
-import Tejs from "@/Components/EditorTools/Tejs";
+// import Tejs from "@/Components/EditorTools/Tejs";
 import { uploadCloudImg } from "@/utils/uploadCloudImg";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { createContext, useState } from "react";
 import toast, { ToastBar, Toaster } from "react-hot-toast";
+import dynamic from 'next/dynamic'
 
+const Tejs = dynamic(
+  () => import('@/Components/EditorTools/Tejs'),
+  { ssr: false }
+)
 const blogStructure = {
   title: "",
   banner: "",

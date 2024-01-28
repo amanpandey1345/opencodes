@@ -1,5 +1,5 @@
 "use client";
-import EditBlogEditor from "@/Components/EditorTools/EditBlogEditor";
+// import EditBlogEditor from "@/Components/EditorTools/EditBlogEditor";
 
 import { uploadCloudImg } from "@/utils/uploadCloudImg";
 import axios from "axios";
@@ -7,6 +7,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
 import toast, { ToastBar, Toaster } from "react-hot-toast";
+import dynamic from 'next/dynamic'
+
+const EditBlogEditor = dynamic(
+  () => import('@/Components/EditorTools/EditBlogEditor'),
+  { ssr: false }
+)
+
 export const EditorContexts = createContext();
       
 const page = ({params}) => {
