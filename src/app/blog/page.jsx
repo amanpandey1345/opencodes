@@ -2,20 +2,21 @@ import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
-const handleGetApi=async()=>{
+// const handleGetApi=async()=>{
   
-  const res = await fetch('https://opencodes.vercel.app/api/blog')
-  if (!res.ok) {
+//   const res = await fetch('https://opencodes.vercel.app/api/blog')
+//   if (!res.ok) {
 
-    throw new Error('Failed to fetch data')
-  }
-  const {blog} = await res.json();
-  return blog
-}
+//     throw new Error('Failed to fetch data')
+//   }
+//   const {blog} = await res.json();
+//   return blog
+// }
 const page = async() => {
 
-  const blog = await handleGetApi()
-  
+  // const blog = await handleGetApi()
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`);
+  const {blog} = await res.json();
 
     
   return ( 
