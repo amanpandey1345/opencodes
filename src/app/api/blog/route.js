@@ -5,13 +5,13 @@ import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const session = await getAuthSession();
+  // const session = await getAuthSession();
 
-  if (!session) {
-    return new NextResponse(
-      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-    );
-  }
+  // if (!session) {
+  //   return new NextResponse(
+  //     JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+  //   );
+  // }
 
   const { content, slug, des, banner, title } = await request.json();
   console.log(content, slug, des, banner, title);

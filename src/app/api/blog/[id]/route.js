@@ -60,13 +60,13 @@ export const GET = async (req,{params}) => {
 
   export const PUT = async (req,{params}) => {
   
-    const session = await getAuthSession();
+  //   const session = await getAuthSession();
 
-  if (!session) {
-    return new NextResponse(
-      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-    );
-  }
+  // if (!session) {
+  //   return new NextResponse(
+  //     JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+  //   );
+  // }
     const {id} = params
 
     const { content, slug, des, banner, title } = await req.json();

@@ -57,13 +57,13 @@ import { uploadImage } from "@/utils/upload-image";
 
 // CREATE A POST
 export const POST = async (req) => {
-  const session = await getAuthSession();
+  // const session = await getAuthSession();
  
-  if (!session) {
-    return new NextResponse(
-      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-    );
-  } 
+  // if (!session) {
+  //   return new NextResponse(
+  //     JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
+  //   );
+  // } 
 
   const formData = await req.formData();
   try { 

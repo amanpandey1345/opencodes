@@ -7,7 +7,7 @@ export const uploadCloudImg = async (img) => {
   const formData = new FormData();
   formData.append("image", img);
   const { data } = await axios.post(
-    "/api/uploadImage",
+    `/api/uploadImage`,
     formData
   );
 
