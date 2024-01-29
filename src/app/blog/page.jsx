@@ -1,11 +1,14 @@
+import axios from 'axios';
 import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
 const page = async() => {
 
-    const res = await fetch(`http://localhost:3000/api/blog`)
-    const {blog} = await res.json();
+    const {data} = await axios.get(`http://localhost:3000/api/blog`)
+
+    
+    console.log(data);
 
   
 
@@ -19,7 +22,7 @@ const page = async() => {
       {/* card */}
  
       {
-       blog.map((item,i)=>
+       data.blog.map((item,i)=>
         <Link href={`/blog/${item.slug}`}>
       <div key={i} className="w-[700px] h-[500px] flex flex-col items-center bg-white/80 rounded-lg gap-2 hover:translate-y-[-10px] transition-all "> 
         <img src={item.banner} alt="" className='flex w-[700px] h-[350px] rounded-2xl' />
