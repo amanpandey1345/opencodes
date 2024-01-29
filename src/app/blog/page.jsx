@@ -5,7 +5,7 @@ import React from 'react'
 
 const page = async() => {
 
-    const {data} = await axios.get(`http://localhost:3000/api/blog`)
+    const {data} = await axios.get(`${process.env.NEXTAUTH_URL}api/blog`)
 
     
     console.log(data);
