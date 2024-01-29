@@ -5,7 +5,7 @@ import React from 'react'
 
 const page = async() => {
 
-    const {data} = await axios.get(`/api/blog`)
+    const {data} = await axios.get(`https://opencodes.vercel.app/api/blog`)
 
     
     console.log(data);
