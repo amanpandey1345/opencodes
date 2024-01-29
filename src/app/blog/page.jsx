@@ -1,3 +1,4 @@
+"use client"
 import axios from 'axios';
 import moment from 'moment';
 import Link from 'next/link';
