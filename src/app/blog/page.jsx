@@ -4,7 +4,7 @@ import React from 'react'
 
 const handleGetApi=async()=>{
   
-  const res = await fetch(`${process.env.NEXTAUTH_URL}api/blog`)
+  const res = await fetch('https://opencodes.vercel.app/api/blog')
   if (!res.ok) {
 
     throw new Error('Failed to fetch data')
