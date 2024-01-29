@@ -14,10 +14,10 @@ const getData = async () => {
   //   // throw new Error("Failed");
   // }
   
-  const data = await res.json()
+  const {blog}= await res.json()
 
-  return data;
-};
+  return blog;
+};  
 const page = async() => {
   const blog = await getData();
   // const blog = await handleGetApi()
