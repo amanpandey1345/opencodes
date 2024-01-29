@@ -2,27 +2,27 @@ import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
-const getData = async () => {
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/blog`,
-    {
-      cache: "no-store",
-    }
-  );
+// const getData = async () => {
+//   const res = await fetch(
+//     `${process.env.NEXTAUTH_URL}/api/blog`,
+//     {
+//       cache: "no-store",
+//     }
+//   );
 
-  // if (!res.ok) {
-  //   // throw new Error("Failed");
-  // }
+//   // if (!res.ok) {
+//   //   // throw new Error("Failed");
+//   // }
   
-  const {blog}= await res.json()
+//   const {blog}= await res.json()
 
-  return blog;
-};  
+//   return blog;
+// };  
 const page = async() => {
-  const blog = await getData();
+  // const blog = await getData();
   // const blog = await handleGetApi()
-  // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`);
-  // const {blog} = await res.json();
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`);
+  const {blog} = await res.json();
 
     
   return ( 
