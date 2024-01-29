@@ -115,7 +115,7 @@ useEffect(() => {
     setTitle(d.blog.title)
     setDes(d.blog.des)
     setIds(d.blog._id)
-  }
+  }  
   const handleImg = async (e) => {
     console.log(e.target.files[0]);
     let imgs = e.target.files[0];
