@@ -1,19 +1,21 @@
-"use client"
-import axios from 'axios';
 import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
+const handleGetApi=async()=>{
+  
+  const res = await fetch(`${process.env.NEXTAUTH_URL}api/blog`)
+  if (!res.ok) {
+
+    throw new Error('Failed to fetch data')
+  }
+  const {blog} = await res.json();
+  return blog
+}
 const page = async() => {
 
-    const {data} = await axios.get(`https://opencodes.vercel.app/api/blog`)
-
-    
-    console.log(data);
-
+  const blog = await handleGetApi()
   
-
- 
 
     
   return ( 
@@ -21,9 +23,9 @@ const page = async() => {
     <div className="flex flex-wrap items-center justify-center w-full min-h-screen gap-6 p-4 bg-pink-300/20">
 
       {/* card */}
- 
+
       {
-       data.blog.map((item,i)=>
+        blog.map((item,i)=>
         <Link href={`/blog/${item.slug}`}>
       <div key={i} className="w-[700px] h-[500px] flex flex-col items-center bg-white/80 rounded-lg gap-2 hover:translate-y-[-10px] transition-all "> 
         <img src={item.banner} alt="" className='flex w-[700px] h-[350px] rounded-2xl' />
