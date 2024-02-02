@@ -101,7 +101,7 @@ const page = () => {
     
   };
   const handleImg = async (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     let imgs = e.target.files[0];
     if (imgs) {
       let loadingImg = toast.loading("uploading....");
@@ -113,7 +113,7 @@ const page = () => {
         setBanner(img);
       }
 
-      console.log(img);
+      // console.log(img);
     }
   };
   const handleKeyDown = (e) => {

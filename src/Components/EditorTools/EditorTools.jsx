@@ -19,7 +19,7 @@ const uploadImageByFile= async(e)=>{
     })
 }
 const uploadImageByURL= async(e)=>{
-    console.log(e);
+    // console.log(e);
     let link = new Promise((resolve,reject)=>{
         try {
             resolve(e)
