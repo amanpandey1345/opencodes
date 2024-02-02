@@ -1,86 +1,54 @@
-import { getAuthSession } from "@/utils/auth";
-
+import { v2 as cloudinary } from "cloudinary";
 import { NextResponse } from "next/server";
-import { uploadImage } from "@/utils/upload-image";
 
+// Cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLIENT_NAME,
+  api_key: process.env.CLOUDINARY_CLIENT_API,
+  api_secret: process.env.CLOUDINARY_CLIENT_SECRET,
+  secure: true,
+});
 
-// export const GET = async (req) => {
-//   const { searchParams } = new URL(req.url);
-
-//   const page = searchParams.get("page");
-//   const cat = searchParams.get("cat");
-
-//   const POST_PER_PAGE = 4;
-
-//   const query = {
-//     take: POST_PER_PAGE,
-//     skip: POST_PER_PAGE * (page - 1),
-//     where: {
-//       ...(cat && { catSlug: cat }),
-//     },
-//   };
-
-
-
-
-
-
-  
-  
-//   try {
-//     const [posts, count] = await prisma.$transaction([
-//       prisma.post.findMany(query),
-//       prisma.post.count({ where: query.where }),
-//     ]);
-//     return new NextResponse(JSON.stringify({ posts, count }, { status: 200 }));
-//   } catch (err) {
-//     console.log(err);
-//     return new NextResponse(
-//       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
-//     );
-//   }
-// };
-
-
-// cloudinary.v2.config({
-//   cloud_name: process.env.CLOUDINARY_CLIENT_NAME,
-//   api_key: process.env.CLOUDINARY_CLIENT_API,
-//   api_secret: process.env.CLOUDINARY_CLIENT_SECRET,
-// });
-
-
-
-
-
-    
-
-
-// CREATE A POST
 export const POST = async (req) => {
-  // const session = await getAuthSession();
- 
-  // if (!session) {
-  //   return new NextResponse(
-  //     JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-  //   );
-  // } 
-
-  const formData = await req.formData();
-  try { 
-
-    
-    
-    const image = formData.get("image");
-
-    const data = await uploadImage(image,"nextjs-Image")
-    
-
   
-    return new NextResponse(JSON.stringify({Url:data.secure_url}, { status: 200 }));
-  } catch (err) {
-    console.log(err);
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+  const data = await req.formData();
+  const image = await data.get("image");
+  const fileBuffer = await image.arrayBuffer();
+
+  var mime = image.type; 
+  var encoding = 'base64'; 
+  var base64Data = Buffer.from(fileBuffer).toString('base64');
+  var fileUri = 'data:' + mime + ';' + encoding + ',' + base64Data;
+
+  try {
+    
+    const uploadToCloudinary = () => {
+      return new Promise((resolve, reject) => {
+
+          var result = cloudinary.uploader.upload(fileUri, {
+            invalidate: true
+          })
+            .then((result) => {
+              console.log(result);
+              resolve(result);
+            })
+            .catch((error) => {
+              console.log(error);
+              reject(error);
+            });
+      });
+    };
+
+    const result = await uploadToCloudinary();
+    
+    let imageUrl = result.secure_url;
+
+    return NextResponse.json(
+      { success: true, imageUrl: imageUrl },
+      { status: 200 }
     );
+  } catch (error) {
+    console.log("server err", error);
+    return NextResponse.json({ err: "Internal Server Error" }, { status: 500 });
   }
 };

@@ -12,7 +12,7 @@ export const uploadCloudImg = async (img) => {
   );
 
 
-  imgUrl= data.Url;
+  imgUrl= data.imageUrl;
 
   return imgUrl;
 };

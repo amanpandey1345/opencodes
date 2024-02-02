@@ -8,6 +8,7 @@ export const uploadImage = async(file,folder)=>{
         await cloudinary.v2.uploader.upload_stream({
             resource_type:"auto",
             folder:folder,
+            invalidate:true
         },async(err,result)=>{   
             if(err){
                 reject(err.message);
