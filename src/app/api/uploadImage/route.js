@@ -26,7 +26,8 @@ export const POST = async (req) => {
       return new Promise((resolve, reject) => {
 
           var result = cloudinary.uploader.upload(fileUri, {
-            invalidate: true
+            invalidate: true,
+            folder:"nextjsBlog"
           })
             .then((result) => {
               console.log(result);
