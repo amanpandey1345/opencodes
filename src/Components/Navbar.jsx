@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
-const Navbar = () => {
+const Navbar = () => {     
   const [open, setOpen] = useState(false)
   const [animationParent] = useAutoAnimate() 
   const {status} = useSession();
