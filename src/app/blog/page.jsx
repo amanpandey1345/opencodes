@@ -1,10 +1,10 @@
-
-
+import Pagination from '@/Components/pagination/Pagination';
 import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
 const getData = async () => {
+  "use server"
   const res = await fetch(
     `${process.env.NEXTAUTH_URL}/api/blog`,
     {
@@ -20,23 +20,24 @@ const getData = async () => {
 
   return blog;
 };  
-const page = async() => {
+const page = async({ searchParams }) => {
   const blog = await getData();
   // const blog = await handleGetApi()
   // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`);
   // const {blog} = await res.json();
-
+  const page = parseInt(searchParams.page) || 1;
+  const { cat } = searchParams;
     
   return ( 
     <> 
-    <div className="flex flex-wrap items-center justify-center w-full min-h-screen gap-6 p-4 bg-pink-300/20">
+    <div className="flex flex-wrap items-center justify-center w-full min-h-screen gap-6 p-4 bg-pink-300">
 
       {/* card */}
 
       {
         blog.map((item,i)=>
         <Link href={`/blog/${item.slug}`}>
-      <div key={i} className="w-[700px] h-[500px] flex flex-col items-center bg-white/80 rounded-lg gap-2 hover:translate-y-[-10px] transition-all "> 
+      <div key={i} className="md:w-[700px] md:h-[500px] flex flex-col items-center bg-white/80 rounded-lg gap-2 hover:translate-y-[-10px] transition-all w-[99%] h-auto "> 
         <img src={item.banner} alt="" className='flex w-[700px] h-[350px] rounded-2xl' />
         <h1 className='text-3xl font-semibold text-center'>{item.title}</h1>
         <h1 className='flex items-center justify-between w-full p-2'> 
@@ -51,10 +52,13 @@ const page = async() => {
       </Link>
         )
       }
+      
+      
      
-    </div> 
+    </div>
+    {/* <Pagination />  */}
     </>
   )
 }
 
-export default page
+export default page 

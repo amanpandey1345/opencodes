@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Img = ({url,caption}) => {
   return (
-    <div className="w-[700px] flex justify-center items-center p-6">
-        <Image src={url} alt="blog-img" width={1000} height={1000} className="w-[70%]"/>
+    <div className="md:w-[700px] flex justify-center items-center p-6 w-[99%]">
+        <Image src={url} alt="blog-img" width={1000} height={1000} className="md:w-[70%]"/>
         {
             caption.lenght ? <p className="w-full my-3 text-base text-center text-gray-300 md:mb-12">
                 {caption}
@@ -45,13 +45,13 @@ const List = ({style,items}) => {
 const BlogContent = ({ block }) => {
   let { type, data } = block;
   if (type === "paragraph") {
-    return <p dangerouslySetInnerHTML={{ __html: data.text }}></p>;
+    return <p className={"my-[10px] md:text-lg "} dangerouslySetInnerHTML={{ __html: data.text }}></p>;
   }
   if (type === "header") {
     if (data.level === 1) {
       return (
         <h1
-          className="text-4xl font-bold"
+          className="text-2xl font-bold md:text-4xl"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h1>
       );
@@ -59,8 +59,8 @@ const BlogContent = ({ block }) => {
 
     if (data.level === 2) {
       return (
-        <h2
-          className="text-3xl font-bold"
+        <h2 
+          className="text-xl font-bold md:text-3xl"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h2>
       );
@@ -69,7 +69,7 @@ const BlogContent = ({ block }) => {
     if (data.level === 3) {
       return (
         <h3
-          className="text-2xl font-bold"
+          className="text-lg font-bold md:text-2xl"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h3>
       );
@@ -77,7 +77,7 @@ const BlogContent = ({ block }) => {
     if (data.level === 4) {
       return (
         <h4
-          className="text-xl font-bold"
+          className="text-base font-bold md:text-xl"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h4>
       );
@@ -85,7 +85,7 @@ const BlogContent = ({ block }) => {
     if (data.level === 5) {
       return (
         <h5
-          className="text-base font-bold"
+          className="text-sm font-bold md:text-base"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h5>
       );
@@ -93,7 +93,7 @@ const BlogContent = ({ block }) => {
     if (data.level === 6) {
       return ( 
         <h6
-          className="text-lg font-bold"
+          className="text-xs font-bold md:text-lg"
           dangerouslySetInnerHTML={{ __html: data.text }}
         ></h6>
       );
