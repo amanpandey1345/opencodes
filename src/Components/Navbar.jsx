@@ -94,7 +94,7 @@ const MobNavbar = ({setOpen}) => {
                   }
           </div>
             <li className='transition-all text-neutral-400 hover:text-black'>contact</li> 
-            <li className='transition-all text-neutral-400 hover:text-black'>Blog</li>
+            <Link href={"/blog"} className='transition-all text-neutral-400 hover:text-black'>Blog</Link>
         </ul> 
       </div>
     </div>

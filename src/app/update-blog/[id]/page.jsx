@@ -154,7 +154,7 @@ useEffect(() => {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full h-auto min-h-screen gap-3 p-4">
-      <div className="w-[700px] flex justify-between ">
+      <div className="md:w-[700px] flex justify-between w-[99%]">
         <button onClick={()=>router.back()} className='px-6 py-2 text-white bg-blue-500 rounded-lg cursor-pointer'>Back</button>
        <Link href={`/blog`}><button className='px-6 py-2 text-white bg-blue-500 rounded-lg cursor-pointer'>Blog</button></Link>
       </div>

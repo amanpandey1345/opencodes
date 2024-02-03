@@ -138,13 +138,13 @@ const page = () => {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full h-auto min-h-screen gap-3 p-4">
-        <label htmlFor="Img">
+        <label htmlFor="Img" className="w-full">
           <img
             src={banner}
             alt=""
-            className=" aspect-video bg-white w-[700px] border-4 border-neutral-200 rounded-lg transition-all"
+            className=" aspect-video bg-white md:w-[700px] border-4 border-neutral-200 rounded-lg transition-all w-[99%]"
           />
-          <input
+          <input 
             type="file"
             id="Img"
             hidden
