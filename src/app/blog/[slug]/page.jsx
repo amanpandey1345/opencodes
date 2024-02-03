@@ -65,7 +65,7 @@ const page = ({ params }) => {
         </div>
       </div>
     </>
-  );
-};
+  );  
+};  
 
 export default page;

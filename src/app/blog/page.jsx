@@ -44,9 +44,9 @@ const page = async({ searchParams }) => {
           <span className='flex gap-2'>
 
           <span className='px-4 py-1 '>Written by Hanif</span>
-          <span className='px-4 py-1 rounded-xl bg-neutral-200'>Tech</span>
+          <span className='p-2 text-xs md:text-sm md:py-1 md:px-4 rounded-xl bg-neutral-200'>Tech</span>
           </span>
-          <span className='px-4 py-1 text-sm rounded-xl bg-neutral-200'>{moment(item.createdAt).fromNow()}</span>
+          <span className='p-2 text-xs md:text-sm md:py-1 md:px-4 rounded-xl bg-neutral-200'>{moment(item.createdAt).fromNow()}</span>
         </h1>
       </div>
       </Link>

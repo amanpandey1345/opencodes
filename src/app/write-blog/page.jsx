@@ -138,20 +138,27 @@ const page = () => {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full h-auto min-h-screen gap-3 p-4">
-        <label htmlFor="Img" className="w-full">
+        <label htmlFor="Img" className="flex items-center justify-center w-full">
           <img
             src={banner}
-            alt=""
+            alt=""  
             className=" aspect-video bg-white md:w-[700px] border-4 border-neutral-200 rounded-lg transition-all w-[99%]"
           />
           <input 
             type="file"
-            id="Img"
+            id="Img"  
             hidden
             accept=".png, .jpg, .jpeg"
             onChange={handleImg}
           />
-        </label>
+        </label> 
+        
+         {/* <div className="EditorsOne ">
+        <h1   >hello </h1>
+        <a href="https://www.npmjs.com/package/@alkhipce/editorjs-react">hello</a>
+          
+         </div>   */}
+          
 
         <textarea
           defaultValue={title}
