@@ -3,30 +3,31 @@ import moment from 'moment';
 import Link from 'next/link';
 import React from 'react'
 
-const getData = async () => {
-  "use server"
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/blog`,
-    {
-      cache: "no-store",
-    }
-  );
+// const getData = async () => {
+//   "use client"
+//   const res = await fetch(
+//     `https://opencodes.vercel.app/api/blog`,
+//   );
 
-  // if (!res.ok) {
-  //   // throw new Error("Failed");
-  // }
+//   // if (!res.ok) {
+//   //   // throw new Error("Failed");
+//   // }
   
-  const {blog}= await res.json()
+//   const {blog}= await res.json()
 
-  return blog;
-};  
+//   return blog;
+// };  
 const page = async({ searchParams }) => {
-  const blog = await getData();
+  // const blog = await getData();
   // const blog = await handleGetApi()
-  // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/blog`);
-  // const {blog} = await res.json();
-  const page = parseInt(searchParams.page) || 1;
-  const { cat } = searchParams;
+  const res = await fetch(`https://opencodes.vercel.app/api/blog`,{
+    next:{
+      revalidate:1,
+    }
+  });
+  const {blog} = await res.json(); 
+  // const page = parseInt(searchParams.page) || 1;
+  // const { cat } = searchParams;
     
   return ( 
     <> 
