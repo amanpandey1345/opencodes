@@ -1,25 +1,41 @@
-"use client";
+// "use client";
 import BlogContent from "@/Components/EditorTools/BlogContent";
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+// import React, { useEffect, useState } from "react";
+export async function generateStaticParams() {
+  const response = await fetch("https://opencodes.vercel.app/api/blog");
+  const { blog } = await response.json();
 
-import React, { useEffect, useState } from "react";
-
-const page = ({ params }) => {
+  return blog.map(({ id }) => id);
+}
+const page = async({ params }) => {
 
   const { slug } = params;
 
   // console.log(slug);
-  const [blog, setblog] = useState({});
-  useEffect(() => {
-    handleData();
-  }, []);
+  // const [blog, setblog] = useState({});
+  // useEffect(() => {
+  //   handleData();
+  // }, []);
+  
+  let res = await fetch(`https://opencodes.vercel.app/api/blog/${slug}`,{
+    next:{
+      revalidate:1,
+    }
+  });
+  const {blog} = await res.json(); 
+  
+  if (res.status === 404) {
+    notFound();
+  }
 
-  const handleData = async () => {
-    let { data } = await axios.get(`/api/blog/${slug}`);
-    // console.log(data);
-    setblog(data.blog);
-  };
+  // const handleData = async () => {
+  //   let { data } = await axios.get(`/api/blog/${slug}`);
+  //   // console.log(data);
+  //   setblog(data.blog);
+  // };
 
   return (
     <>

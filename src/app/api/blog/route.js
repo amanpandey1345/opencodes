@@ -81,7 +81,8 @@ export const GET = async (request) => {
 
     console.log(console.log(skip,page,limit));
 
-    const blog = await Blog.find().skip(skip).limit(limit);
+    const blog = await Blog.find();
+    // .skip(skip).limit(limit);
     try {
       return new NextResponse(
         JSON.stringify({
